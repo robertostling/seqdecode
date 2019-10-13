@@ -37,7 +37,7 @@ def encode(data, n_bits, n_flush, tailbiting, code_id):
     cdef conv_code code = available_codes[code_id]
     cdef int padding_bits = 0
 
-    if 8 + n_bits + (0 if tailbiting else 32) >= 64*max_words:
+    if 8 + n_bits + (0 if tailbiting else n_flush) >= 64*max_words:
         raise ValueError('Message too long, increase MAX_WORDS in conv.c')
 
     assert data < (1 << n_bits)
@@ -63,7 +63,7 @@ def decode(data, n_bits, n_flush, tailbiting, code_id, max_iter_per_bit,
     cdef conv_code code = available_codes[code_id]
 
     # TODO: other rules with tail-biting codes?
-    if 8 + n_bits + (0 if tailbiting else 32) >= 64*max_words:
+    if 8 + n_bits + (0 if tailbiting else n_flush) >= 64*max_words:
         raise ValueError('Message too long, increase MAX_WORDS in conv.c')
 
     for i, x in enumerate(data):

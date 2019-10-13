@@ -14,7 +14,8 @@ import pyconv
 #       MAX_WORDS.
 #
 
-message = b'a message to be encoded and back'
+#message = b'a message to be encoded and back'
+message = b'a message to get'
 data_bits = 8*len(message)
 data = sum(c << (8*i) for i, c in enumerate(message))
 

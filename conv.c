@@ -22,7 +22,7 @@ typedef struct {
  * the stack_item struct, this should be a multiple of 64. If zero-valued
  * flushing (tail bits) are used, they should also fit within this limit. */
 #ifndef MAX_WORDS
-#define MAX_WORDS   5
+#define MAX_WORDS   6
 #endif
 #define MAX_BITS    (64*MAX_WORDS)
 
